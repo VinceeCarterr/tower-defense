@@ -98,21 +98,4 @@ to tweak live in `Constants.java`.
 - Sound effects (`Gdx.audio.newSound(...)`) and a main menu screen
 - Save the path/map to a file and load it (data-driven levels)
 
-## Put it on GitHub
-
-```bash
-cd tower-defense
-git init
-git add .
-git commit -m "MVP tower defense in Java + libGDX"
-git branch -M main
-git remote add origin https://github.com/<your-username>/tower-defense.git
-git push -u origin main
-```
-
-Add a screenshot or short GIF to the README — recruiters skim, and a visual of a
-working game is worth more than the code itself.
-
----
-
 Built with libGDX 1.12.1.
