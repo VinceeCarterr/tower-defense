@@ -1,0 +1,40 @@
+// Root build file. Configures both sub-modules:
+//   :core   -> all game logic (platform independent)
+//   :lwjgl3 -> desktop launcher (opens the window, runs the game)
+
+allprojects {
+    apply plugin: 'java'
+    version = '1.0'
+
+    ext {
+        gdxVersion = '1.12.1'
+    }
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+}
+
+project(':core') {
+    dependencies {
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+project(':lwjgl3') {
+    apply plugin: 'application'
+
+    application {
+        mainClass = 'com.eldev.td.lwjgl3.DesktopLauncher'
+    }
+
+    dependencies {
+        implementation project(':core')
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+}
